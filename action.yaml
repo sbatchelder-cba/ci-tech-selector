@@ -19,7 +19,7 @@ runs:
   using: composite
   steps:
     - name: CI - Maven
-      if: ${{ inputs.TECH == "maven" }}
+      if: ${{ inputs.TECH == 'maven' }}
       id: ci-maven
       kind: build
       uses: docker://python:3.12-alpine3.19
@@ -28,7 +28,7 @@ runs:
         echo Running Maven
 
     - name: CI - Python
-      if: ${{ inputs.TECH == "python" }}
+      if: ${{ inputs.TECH == 'python' }}
       id: ci-maven
       kind: build
       uses: docker://python:3.12-alpine3.19
