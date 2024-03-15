@@ -32,7 +32,7 @@ runs:
       if: ${{ inputs.TECH == 'python3.10' }}
       id: ci-python
       kind: build
-      uses: sbatchelder-cba/ci-python-3.10@v0.0.4
+      uses: sbatchelder-cba/ci-python-3.10@v0.0.5
       with:
         py-test-args: ${{ inputs.PY-TEST-ARGS }}
         py-requirements: ${{ inputs.PY-REQUIREMENTS }}
