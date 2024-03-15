@@ -18,20 +18,21 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: CI - Maven
-      if: ${{ inputs.TECH == 'maven' }}
+    - name: CI - Maven3.9
+      if: ${{ inputs.TECH == 'maven3.9' }}
       id: ci-maven
       kind: build
-      uses: docker://python:3.12-alpine3.19
-      shell: sh
-      run: |
-        echo Running Maven
+      uses: docker://ci-maven-3.9@v0.0.3
+      with:
+        mvn-compile-args: ${{ inputs.MVN-COMPILE-ARGS }}
+        mvn-test-args: ${{ inputs.MVN-TEST-ARGS }}
+
 
     - name: CI - Python
-      if: ${{ inputs.TECH == 'python' }}
-      id: ci-maven
+      if: ${{ inputs.TECH == 'python3.10' }}
+      id: ci-python
       kind: build
-      uses: docker://python:3.12-alpine3.19
-      shell: sh
-      run: |
-        echo Running Python
+      uses: docker://ci-python-3.10@v0.0.1
+      with:
+        py-test-args: ${{ inputs.PY-TEST-ARGS }}
+        py-requirements: ${{ inputs.PY-REQUIREMENTS }}
