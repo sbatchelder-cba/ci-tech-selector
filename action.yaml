@@ -1,0 +1,37 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: 'ci-tech-selector'
+description: 'Parse Config File'
+
+inputs:
+  TECH:
+    description: 'asdf'
+  MVN-COMPILE-ARGS:
+    description: 'asdf'
+  MVN-TEST-ARGS:
+    description: 'asdf'
+  PY-REQUIREMENTS:
+    description: 'asdf'
+  PY-TEST-ARGS:
+    description: 'asdf'
+
+runs:
+  using: composite
+  steps:
+    - name: CI - Maven
+      if: ${{ inputs.TECH == "maven" }}
+      id: ci-maven
+      kind: build
+      uses: docker://python:3.12-alpine3.19
+      shell: sh
+      run: |
+        echo Running Maven
+
+    - name: CI - Python
+      if: ${{ inputs.TECH == "python" }}
+      id: ci-maven
+      kind: build
+      uses: docker://python:3.12-alpine3.19
+      shell: sh
+      run: |
+        echo Running Python
